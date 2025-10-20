@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fce4ec; /* Nền màu hồng nhạt */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Ẩn các phần tử thừa */
+}
+
+/* Khung chứa hoa */
+.flower {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 220px;
+}
+
+/* Cánh hoa chung */
+.petal {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    background-color: #e91e63; /* Màu hồng đậm của hoa hồng */
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    /* Hiệu ứng đổ bóng nhẹ cho cánh hoa */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    top: 25px;
+    left: 35px;
+    transform-origin: 50% 100%; /* Xoay quanh tâm dưới */
+    opacity: 0.9;
+    transition: transform 0.5s ease;
+}
+
+/* Định vị và xoay từng cánh hoa */
+.petal.p1 { transform: rotate(0deg); z-index: 6; }
+.petal.p2 { transform: rotate(60deg); z-index: 5; background-color: #f06292; }
+.petal.p3 { transform: rotate(120deg); z-index: 4; background-color: #e91e63; }
+.petal.p4 { transform: rotate(180deg); z-index: 3; background-color: #f06292; }
+.petal.p5 { transform: rotate(240deg); z-index: 2; background-color: #e91e63; }
+.petal.p6 { transform: rotate(300deg); z-index: 1; background-color: #f06292; }
+
+/* Thân cây */
+.stem {
+    position: absolute;
+    width: 8px; /* Giảm độ rộng để trông mảnh mai hơn */
+    height: 300px; /* Chiều cao thân cây */
+    background-color: #4caf50; 
+    bottom: -280px; /* Giữ nguyên vị trí ban đầu (từ margin-bottom: 220px của .flower + chiều cao của hoa) */
+    left: calc(50% - 4px); /* Căn giữa thân cây 8px */
+    border-radius: 4px; /* Bo tròn thân cây */
+    z-index: 0;
+}
+
+/* THÊM CÁC CÀNH CÂY NHỎ */
+.stem::before,
+.stem::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 30px;
+    background-color: #4caf50;
+    border-radius: 2px;
+    transform-origin: 0% 100%; /* Xoay từ gốc */
+}
+
+/* Cành 1 (thấp) */
+.stem::before {
+    top: 60%; /* Vị trí trên thân chính */
+    left: 8px;
+    transform: rotate(45deg);
+}
+
+/* Cành 2 (cao) */
+.stem::after {
+    top: 35%; /* Vị trí cao hơn trên thân chính */
+    left: -4px;
+    transform: rotate(-35deg);
+}
+
+
+.message {
+    text-align: center;
+    font-size: 1.5em;
+    color: #e91e63;
+    font-weight: bold;
+    margin-top: 150px;
+}
